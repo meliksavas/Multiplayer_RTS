@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPun
 {
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviourPun
 
             if (unit != null /*&& unit.photonView.Owner == PhotonNetwork.LocalPlayer*/)
             {
-                selectedUnits.Clear();
+                
                 selectedUnits.Add(unit);
                 unit.Selected.SetActive(true);
 
@@ -64,5 +66,10 @@ public class PlayerController : MonoBehaviourPun
                 unit.MoveToPosition(hit.point);
             }
         }
+    }
+
+    public void SpawnPawn()
+    {
+        PhotonNetwork.Instantiate("Pawn",new Vector3(3,3,0),Quaternion.identity);
     }
 }
